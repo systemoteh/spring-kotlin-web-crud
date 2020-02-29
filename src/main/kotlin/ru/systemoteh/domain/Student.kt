@@ -1,5 +1,6 @@
 package ru.systemoteh.domain
 
+import java.text.SimpleDateFormat
 import java.util.*
 
 data class Student(
@@ -9,4 +10,8 @@ data class Student(
     val lastName: String,
     val birthDate: Date,
     val email: String
-)
+) {
+    fun getBirthDate(): String {
+        return SimpleDateFormat("yyyy-MM-dd").format(birthDate)
+    }
+}

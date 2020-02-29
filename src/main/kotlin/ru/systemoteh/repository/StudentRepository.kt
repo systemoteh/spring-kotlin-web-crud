@@ -23,7 +23,7 @@ class StudentRepository {
                     "Ivan",
                     "Ivanovich",
                     "Ivanov",
-                    Date(2001, 1, 1),
+                    Date(101, 0, 1),
                     "ivanov@mail.ru"
                 )
             )
@@ -33,7 +33,7 @@ class StudentRepository {
                     "Petr",
                     "Petrovich",
                     "Petrov",
-                    Date(2002, 2, 2),
+                    Date(102, 1, 2),
                     "petrov@yandex.ru"
                 )
             )
@@ -43,7 +43,7 @@ class StudentRepository {
                     "Sidor",
                     "Sidorovich",
                     "Sidorov",
-                    Date(2003, 3, 3),
+                    Date(103, 2, 3),
                     "sidorov@gmail.com"
                 )
             )

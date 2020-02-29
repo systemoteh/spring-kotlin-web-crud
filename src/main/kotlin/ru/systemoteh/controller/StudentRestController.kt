@@ -6,7 +6,7 @@ import org.springframework.web.bind.annotation.RestController
 import ru.systemoteh.repository.StudentRepository
 
 @RestController
-class GreetingController {
+class StudentRestController {
 
     // http://localhost:8080/students
     @GetMapping("/students")
