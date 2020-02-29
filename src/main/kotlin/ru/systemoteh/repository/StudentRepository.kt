@@ -9,6 +9,10 @@ class StudentRepository {
         return students
     }
 
+    fun findByName(name: String): List<Student> {
+        return students.filter { it.firstName == name }
+    }
+
     companion object {
         val students = mutableListOf<Student>()
 

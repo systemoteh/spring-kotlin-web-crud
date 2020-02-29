@@ -1,17 +1,20 @@
 package ru.systemoteh.controller
 
-import ru.systemoteh.repository.StudentRepository
 import org.springframework.web.bind.annotation.GetMapping
+import org.springframework.web.bind.annotation.RequestParam
 import org.springframework.web.bind.annotation.RestController
+import ru.systemoteh.repository.StudentRepository
 
 @RestController
 class GreetingController {
 
+    // http://localhost:8080/students
     @GetMapping("/students")
     fun findAll() = StudentRepository().findAll()
 
-//    @GetMapping("/student/")
-//    fun getByName(@RequestParam(value = "name", defaultValue = "") name: String) =
-//        Greeting(counter.incrementAndGet(), "Hello, $name")
+    // http://localhost:8080/student?name=Petr
+    @GetMapping("/student")
+    fun findByName(@RequestParam(value = "name", defaultValue = "") name: String) =
+        StudentRepository().findByName(name)
 
 }
