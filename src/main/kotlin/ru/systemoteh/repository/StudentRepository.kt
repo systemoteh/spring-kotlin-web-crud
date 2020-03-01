@@ -1,16 +1,23 @@
 package ru.systemoteh.repository
 
+import org.springframework.stereotype.Component
 import ru.systemoteh.domain.Student
 import java.util.*
 
+@Component
 class StudentRepository {
 
     fun findAll(): MutableList<Student> {
         return students
     }
 
-    fun findByName(name: String): List<Student> {
-        return students.filter { it.firstName == name }
+    fun findByLastName(lastName: String): List<Student> {
+        return students.filter { it.lastName == lastName }
+    }
+
+    fun save(student: Student): Student {
+        students.add(student)
+        return student
     }
 
     companion object {
@@ -23,7 +30,7 @@ class StudentRepository {
                     "Ivan",
                     "Ivanovich",
                     "Ivanov",
-                    Date(101, 0, 1),
+                    Date(101, 0, 1),    // year + 1900
                     "ivanov@mail.ru"
                 )
             )
