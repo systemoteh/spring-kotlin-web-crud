@@ -22,4 +22,12 @@ class StudentRestController(private val studentService: StudentService) {
     @PostMapping("/student/add")
     @ResponseStatus(HttpStatus.CREATED)
     fun add(@RequestBody student: Student) = studentService.add(student)
+
+    // http://localhost:8080/student/edit-{id}
+    @PutMapping("/student/edit-{id}")
+    fun edit(@PathVariable id: Long, @RequestBody student: Student) = studentService.edit(id, student)
+
+    // http://localhost:8080/student/delete-{id}
+    @DeleteMapping("/student/delete-{id}")
+    fun delete(@PathVariable id: Long) = studentService.delete(id)
 }

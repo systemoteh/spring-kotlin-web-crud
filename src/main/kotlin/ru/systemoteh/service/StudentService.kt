@@ -12,7 +12,7 @@ class StudentService(private val studentRepository: StudentRepository) {
 
     fun add(student: Student): Student = studentRepository.save(student)
 
-    //fun edit(id: Long, product: Student): Student = studentRepository.save(product.copy(id = id)) // Сохраняем копию объекта с указанным id в БД. Идиоматика Kotlin говорит что НЕ изменяемый - всегда лучше чем изменяемый (никто не поправит значение в другом потоке) и предлагает метод copy для копирования объектов (специальных классов для хранения данных) с возможностью замены значений
+    fun edit(id: Long, student: Student): Student = studentRepository.update(id, student)
 
-    //fun remove(id: Long) = studentRepository.delete(id)
+    fun delete(id: Long): Student = studentRepository.delete(id)
 }

@@ -2,6 +2,7 @@ package ru.systemoteh.repository
 
 import org.springframework.stereotype.Component
 import ru.systemoteh.domain.Student
+import java.time.Instant
 import java.util.*
 
 @Component
@@ -12,7 +13,8 @@ class StudentRepository {
     }
 
     fun findByLastName(lastName: String): List<Student> {
-        return students.filter { it.lastName == lastName }
+        val filteredStudents = students.filter { it.lastName == lastName }
+        return if (filteredStudents.isNotEmpty()) filteredStudents else listOf(notFoundStudent)
     }
 
     fun save(student: Student): Student {
@@ -20,8 +22,26 @@ class StudentRepository {
         return student
     }
 
+    fun update(id: Long, student: Student): Student {
+        return if (delete(id) == notFoundStudent) notFoundStudent else {
+            students.add(student)
+            student
+        }
+    }
+
+    fun delete(id: Long): Student {
+        val student = students.filter { it.id == id }.getOrElse(0) { notFoundStudent }
+        students.remove(student)
+        return student
+    }
+
     companion object {
         val students = mutableListOf<Student>()
+        val notFoundStudent = Student(
+            0, "NotFound", "NotFound", "NotFound", Date.from(
+                Instant.now()
+            ), "NotFound"
+        )
 
         init {
             students.add(
